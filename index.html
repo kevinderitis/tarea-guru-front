@@ -19,6 +19,8 @@ $(document).ready(function() {
     })
 })
 </script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/api-functions.js"></script>
 </head>
 <body>
 <div class="logo bg-white pl-5"><a href="https://www.tutarea.guru"><img src="images\logoblue.webp"></a></div>
@@ -59,14 +61,14 @@ $(document).ready(function() {
                
               <div class="formrow">
                 <label><strong>1.</strong> Tu nombre*</label>
-                <input type="email" class="form-control" placeholder="Escribe tu nombre" required="">
+                <input type="text" id="nameForm" class="form-control" placeholder="Escribe tu nombre" required="">
               </div>
                 <div class="formrow mt-5">
                 <label><strong>2.</strong> Tu e-mail*</label>
-                <input type="email" class="form-control" placeholder="Escribe tu e-mail" required="">
+                <input type="email" id="emailForm" class="form-control" placeholder="Escribe tu e-mail" required="">
               </div>
               <div class="buttonouter">
-                <button class="btn-default wow zoomIn shadow"><span>Continuar</span><img src="images\handicon.webp" width="30" height="19" ></button>
+                <button class="btn-default wow zoomIn shadow" onclick="sendUser()"><span>Continuar</span><img src="images\handicon.webp" width="30" height="19" ></button>
               </div>
             </form>
           </div>
