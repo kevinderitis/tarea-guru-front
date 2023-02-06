@@ -1,1 +1,45 @@
-<h1>form</h1>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      var questionNumber = 2;
+
+      function addQuestion() {
+        var container = document.getElementById("questionsContainer");
+        var label = document.createElement("label");
+        label.innerHTML = "Pregunta " + questionNumber + ":";
+        container.appendChild(label);
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = "question";
+        container.appendChild(input);
+        questionNumber++;
+      }
+
+      function submitForm() {
+        var questions = [];
+        var inputs = document.getElementsByName("question");
+        for (var i = 0; i < inputs.length; i++) {
+          questions.push(inputs[i].value);
+        }
+        axios.post("/homework", { questions: questions })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <div id="questionsContainer">
+        <label>Pregunta 1:</label>
+        <input type="text" name="question">
+      </div>
+      <input type="button" value="Agregar más preguntas" onclick="addQuestion()">
+      <input type="button" value="Enviar" onclick="submitForm()">
+    </form>
+  </body>
+</html>
